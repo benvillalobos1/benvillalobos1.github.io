@@ -1,6 +1,596 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <h1>Hello, my name is Ben Villalobos</h1>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Benjamin — Developer & CTO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Benjamin — CTO, full‑stack engineer, and Clemson CS student focused on frontend engineering, AI, and trading systems."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #ff7a3c;
+      --accent-soft: rgba(255, 122, 60, 0.12);
+      --text: #f5f5f7;
+      --muted: #a0a3b1;
+      --border: #23263a;
+      --card-radius: 14px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, #151b3a 0, #050816 55%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 22px 22px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #11152b 0, #050816 55%, #11152b 100%);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: var(--shadow-soft);
+      position: sticky;
+      top: 16px;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+    }
+
+    @media (min-width: 720px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .brand-pill {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+      background: rgba(5, 8, 22, 0.8);
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    nav a {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      background: rgba(10, 13, 32, 0.9);
+      transition: all 0.18s ease-out;
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(255, 122, 60, 0.12);
+      transform: translateY(-1px);
+    }
+
+    section {
+      margin-top: 28px;
+      padding: 22px 20px 20px;
+      border-radius: var(--card-radius);
+      background: radial-gradient(circle at top left, #151a33 0, #050816 55%);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    section h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 720px) {
+      .hero {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+        align-items: center;
+      }
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      background: rgba(5, 8, 22, 0.9);
+    }
+
+    .hero-card {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: radial-gradient(circle at top, #1b213f 0, #050816 55%);
+      padding: 16px 16px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 122, 60, 0.16), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(80, 180, 255, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .hero-highlight {
+      font-size: 0.95rem;
+    }
+
+    .hero-highlight strong {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hero-status {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(5, 8, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .section-grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(5, 8, 22, 0.9);
+      padding: 14px 14px 12px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .card-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .card-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 0.74rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(10, 13, 32, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .list {
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .goals-list li::before {
+      content: "▹";
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .contact-link {
+      font-size: 0.86rem;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(5, 8, 22, 0.9);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease-out;
+    }
+
+    .contact-link span {
+      font-size: 0.9rem;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 20px 32px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand">
+        <div class="brand-title">
+          Benjamin
+          <span class="brand-pill">Developer & CTO</span>
+        </div>
+        <div class="brand-subtitle">
+          Full‑stack engineering • Frontend craft • AI & trading systems • Clemson CS
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#goals">Now & Next</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <div class="hero">
+        <div>
+          <div class="hero-title">
+            Building systems that <span>actually ship</span>.
+          </div>
+          <p class="hero-tagline">
+            I’m Benjamin, a full‑stack engineer and CTO of Syntax IP, currently pursuing a B.S. in Computer Science
+            with an AI minor at Clemson. I care about clean architecture, sharp frontend experiences, and products that
+            move real numbers.
+          </p>
+          <div class="hero-meta">
+            <span class="chip">Bluffton → Clemson, SC</span>
+            <span class="chip">CTO @ Syntax IP</span>
+            <span class="chip">Frontend & TypeScript</span>
+            <span class="chip">AI & Trading Bots</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-inner">
+            <div>
+              <div class="hero-label">Current focus</div>
+              <p class="hero-highlight">
+                Leveling up as a <strong>frontend engineer</strong> while architecting
+                <strong>production‑grade systems</strong> for Syntax IP.
+              </p>
+            </div>
+            <div>
+              <div class="hero-status">
+                Actively exploring:
+              </div>
+              <div class="pill-row">
+                <span class="pill">Frontend interviews</span>
+                <span class="pill">Browser fundamentals</span>
+                <span class="pill">Performance & DX</span>
+                <span class="pill">Trend‑following bots</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="section-grid two">
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">CTO & Lead Engineer — Syntax IP</div>
+            <div class="card-meta">Full‑stack architecture • Present</div>
+          </div>
+          <div class="card-body">
+            Designing and shipping end‑to‑end systems—from backend logging pipelines and APIs to admin dashboards and
+            internal tools. I focus on reliability, observability, and keeping the UI fast and intentional.
+          </div>
+          <ul class="list">
+            <li>Architected backend logging with database persistence and structured request tracing.</li>
+            <li>Built an admin dashboard for request management, status updates, and operational visibility.</li>
+            <li>Owns full‑stack decisions: Node.js, Express, TypeScript, and modern frontend stacks.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Admin dashboards</span>
+            <span class="tag">System design</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">Student — Clemson University</div>
+            <div class="card-meta">B.S. Computer Science • AI minor</div>
+          </div>
+          <div class="card-body">
+            Blending computer science fundamentals with AI and prior business coursework to think like both an engineer
+            and an operator. I like building things that could be real products, not just assignments.
+          </div>
+          <ul class="list">
+            <li>Rising junior with a focus on software engineering and AI‑driven systems.</li>
+            <li>Background in business and management from Jacksonville University.</li>
+            <li>Interested in internships that mix product impact with strong engineering mentorship.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Computer Science</span>
+            <span class="tag">Artificial Intelligence</span>
+            <span class="tag">Product thinking</span>
+            <span class="tag">Management</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected projects</h2>
+      <div class="section-grid two">
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">Operational Admin Dashboard</div>
+            <div class="card-meta">Internal tooling • Syntax IP</div>
+          </div>
+          <div class="card-body">
+            A focused admin interface for managing incoming requests, updating statuses, and inspecting logs. Designed
+            for clarity, speed, and minimal friction for operators.
+          </div>
+          <ul class="list">
+            <li>Real‑time status updates and request lifecycle tracking.</li>
+            <li>Integrated with backend logging for quick debugging and audits.</li>
+            <li>Built with modern frontend patterns and clean component structure.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Frontend engineering</span>
+            <span class="tag">UX for operators</span>
+            <span class="tag">Observability</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">Trend‑Following Trading Bots</div>
+            <div class="card-meta">Personal research • In progress</div>
+          </div>
+          <div class="card-body">
+            Exploring algorithmic trading systems that lean on trend‑following strategies, risk management, and clean
+            abstractions between data, logic, and execution.
+          </div>
+          <ul class="list">
+            <li>Focus on robustness over hype: clear rules, backtesting, and risk constraints.</li>
+            <li>Experimenting with data pipelines and strategy evaluation.</li>
+            <li>Long‑term goal: production‑ready, monitored trading infrastructure.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Algorithmic trading</span>
+            <span class="tag">Trend following</span>
+            <span class="tag">Backtesting</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="goals">
+      <h2>Now & next</h2>
+      <div class="section-grid">
+        <article class="card">
+          <div class="card-header">
+            <div class="card-title">What I’m optimizing for</div>
+            <div class="card-meta">Short‑term focus</div>
+          </div>
+          <ul class="list goals-list">
+            <li>Secure a strong software engineering internship for Summer 2026.</li>
+            <li>Sharpen frontend interview skills: JS/TS nuances, browser APIs, and performance.</li>
+            <li>Deepen system design instincts through real product work at Syntax IP.</li>
+            <li>Keep building things that feel like real tools, not just demos.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="card-body">
+        If you’re working on something interesting—especially around developer tools, trading systems, or high‑leverage
+        internal products—I’d love to talk.
+      </p>
+      <div class="contact-row">
+        <!-- Replace the placeholders below with your real links -->
+        <a class="contact-link" href="mailto:you@example.com">
+          <span>✉</span>
+          <span>Email</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+          <span>in</span>
+          <span>LinkedIn</span>
+        </a>
+        <a class="contact-link" href="https://github.com" target="_blank" rel="noreferrer">
+          <span>⌘</span>
+          <span>GitHub</span>
+        </a>
+        <a class="contact-link" href="#">
+          <span>↺</span>
+          <span>Back to top</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Benjamin — Built with intention.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
