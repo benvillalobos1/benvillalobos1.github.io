@@ -10,7 +10,11 @@
       --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      --max-width: 980px;
+      --max-width: 1280px;
+    }
+
+    html, body {
+        scroll-behavior: smooth;
     }
 
     * {
@@ -125,6 +129,10 @@
       background: radial-gradient(circle at top left, #151a33 0, #050816 55%);
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
+    }
+
+    section[id] {
+        scroll-margin-top: 150px;
     }
 
     section h2 {

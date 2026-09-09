@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Benjamin — CTO, full‑stack engineer, and Clemson CS student focused on frontend engineering, AI, and trading systems."
+    content="Ben Villalobos - full-stack engineer - Clemson University CS Student."
   />
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,11 +15,11 @@
     <header>
       <div class="brand">
         <div class="brand-title">
-          Benjamin
-          <span class="brand-pill">Developer & CTO</span>
+          Ben Villalobos
+          <span class="brand-pill">Full-Stack Software Enginner</span>
         </div>
         <div class="brand-subtitle">
-          Full‑stack engineering • Frontend craft • AI & trading systems • Clemson CS
+          Software Enginnering + Clemson CS Student
         </div>
       </div>
       <nav>
@@ -35,18 +35,17 @@
       <div class="hero">
         <div>
           <div class="hero-title">
-            Building systems that <span>actually ship</span>.
+            Passionate <span>Computer Science </span>student.
           </div>
           <p class="hero-tagline">
-            I’m Benjamin, a full‑stack engineer and CTO of Syntax IP, currently pursuing a B.S. in Computer Science
-            with an AI minor at Clemson. I care about clean architecture, sharp frontend experiences, and products that
-            move real numbers.
+            I’m Ben, a full‑stack engineer and CTO of Syntax IP, currently pursuing a B.S. in Computer Science
+            with an AI minor at Clemson. I am deeply passionate about Software engineering and computer science as a whole.
           </p>
           <div class="hero-meta">
-            <span class="chip">Bluffton → Clemson, SC</span>
+            <span class="chip">Bluffton, SC</span>
             <span class="chip">CTO @ Syntax IP</span>
-            <span class="chip">Frontend & TypeScript</span>
-            <span class="chip">AI & Trading Bots</span>
+            <span class="chip">Full-Stack Development</span>
+            <span class="chip">Artifical Intellgience</span>
           </div>
         </div>
 
@@ -197,20 +196,19 @@
         internal products—I’d love to talk.
       </p>
       <div class="contact-row">
-        <!-- Replace the placeholders below with your real links -->
-        <a class="contact-link" href="mailto:you@example.com">
+        <a class="contact-link" href="mailto:benjaminlv0916@gmail.com">
           <span>✉</span>
           <span>Email</span>
         </a>
-        <a class="contact-link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+        <a class="contact-link" href="https://www.linkedin.com/in/ben-villalobos-178670389/" target="_blank" rel="noreferrer">
           <span>in</span>
           <span>LinkedIn</span>
         </a>
-        <a class="contact-link" href="https://github.com" target="_blank" rel="noreferrer">
+        <a class="contact-link" href="https://github.com/benvillalobos1" target="_blank" rel="noreferrer">
           <span>⌘</span>
           <span>GitHub</span>
         </a>
-        <a class="contact-link" href="#">
+        <a class="contact-link" href="#about">
           <span>↺</span>
           <span>Back to top</span>
         </a>
@@ -223,6 +221,14 @@
   </footer>
 
   <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        target.scrollIntoView({ behavior: "smooth" });
+      })
+    })
+
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
