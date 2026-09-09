@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
+  <title>Create Profile</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -27,25 +28,45 @@
     }
 
     h1 {
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       font-size: 32px;
       font-weight: 600;
     }
 
-    .buttons {
+    .subtitle {
+      margin-bottom: 35px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    .form {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
+    input {
+      width: 100%;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 20px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus {
+      border-color: #1677ff;
+    }
+
     button {
       width: 100%;
-      padding: 24px;
+      padding: 22px;
       border: none;
       border-radius: 10px;
       background: #1677ff;
       color: white;
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -61,15 +82,26 @@
     }
   </style>
 </head>
+
 <body>
 
   <main class="container">
-    <h1>Welcome</h1>
+    <h1>Create Your Profile</h1>
+    <p class="subtitle">Enter your name to get started</p>
 
-    <div class="buttons">
-      <button type="button">Customer</button>
-      <button type="button">Bartender</button>
-    </div>
+    <form class="form">
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name"
+        autocomplete="name"
+        required
+      >
+
+      <button type="submit">
+        Create Profile
+      </button>
+    </form>
   </main>
 
 </body>
